@@ -1,4 +1,5 @@
-build
-src
-\.eslintrc.json
+build/
 yarn.lock
+node_modules/
+\.idea/
+\.eslintrc.json
