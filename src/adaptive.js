@@ -4,7 +4,7 @@
 import Vue from "vue"
 import _ from 'lodash'
 
-export default class Adaptive {
+export default class {
 	constructor (config, deviceList) {
 		let data = {
 			is: deviceList,

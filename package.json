@@ -1,9 +1,9 @@
 {
   "name": "vue-adaptive",
-  "description": "A float rem adaptive for Vue.js",
-  "license": "AGPL-3.0-or-later",
-  "author": "SoulString <zmey3301@gmail.com>",
-  "main": "./dist/index.js",
+  "description": "A rem scale adaptive with breakpointsn for Vue.js",
+  "license": "AGPL-3.0",
+  "author": "zmey3301 <zmey3301@gmail.com>",
+  "main": "dist/index.js",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -30,5 +30,11 @@
     "vue": "^2.5.16",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
-  }
+  },
+  "homepage": "https://github.com/zmey3301/vue-adaptive#readme",
+  "keywords": [
+    "vue",
+    "adaptive",
+    "scale"
+  ]
 }
