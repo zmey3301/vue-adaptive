@@ -83,7 +83,7 @@ export default class {
 					let k = device.k || 1
 					rem = remBase * k * 10
 				}
-				html.style.fontSize = rem
+				html.style.fontSize = `${rem}px`
 				this.VM.$data.rem = rem
 			}
 		})
