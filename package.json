@@ -4,7 +4,7 @@
   "license": "AGPL-3.0",
   "author": "zmey3301 <zmey3301@gmail.com>",
   "main": "./dist/index.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zmey3301/vue-adaptive.git"
