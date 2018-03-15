@@ -67,7 +67,7 @@ You can use global classes in your styles:
 .someblock
     background-color: blue
     .mobile &
-      background-color: red
+        background-color: red
 ```
 Or conditions in vue template:
 ```vue
