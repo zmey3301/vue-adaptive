@@ -1,6 +1,6 @@
 {
   "name": "vue-adaptive",
-  "description": "A rem scale adaptive with breakpointsn for Vue.js",
+  "description": "A rem scale adaptive with breakpoints for Vue.js",
   "license": "AGPL-3.0",
   "author": "zmey3301 <zmey3301@gmail.com>",
   "main": "dist/index.js",
