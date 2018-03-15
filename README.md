@@ -1,4 +1,5 @@
-#vue-adaptive
+# vue-adaptive
+
 A rem scale adaptive with breakpoints for Vue.js
 
 [![npm](https://img.shields.io/npm/v/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
