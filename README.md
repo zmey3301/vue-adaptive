@@ -86,8 +86,11 @@ You also can create many breakpoints for one device by adding name to device, fo
     },
     "desktop:thin": {
         "k": 0.75,
-        "base": {
+        "from": {
             "width": 1008
+        },
+        "base": {
+            "width": 1100
         },
         "to": {
             "width": 1365
