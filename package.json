@@ -13,7 +13,7 @@
     "url": "https://github.com/zmey3301/vue-adaptive/issues"
   },
   "scripts": {
-    "build": "babel src --minified --no-comments --out-dir dist/index.js",
+    "build": "babel src --minified --no-comments --out-dir dist",
     "prepack": "npm run lint && npm run build",
     "lint": "eslint --ext .js src"
   },
