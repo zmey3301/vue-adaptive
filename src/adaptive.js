@@ -127,7 +127,7 @@ export default class {
 			let newClass = checked ? name : `no-${name}`
 			// Updating classes if changed
 			if (oldClass !== newClass || init) {
-				html.classList.remove(oldClass)
+				if (!init) html.classList.remove(oldClass)
 				html.classList.add(newClass)
 				this.VM.$data.is[name] = checked
 			}
