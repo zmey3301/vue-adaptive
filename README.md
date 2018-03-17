@@ -1,4 +1,5 @@
-#vue-adaptive
+# vue-adaptive
+
 A rem scale adaptive with breakpoints for Vue.js
 
 [![npm](https://img.shields.io/npm/v/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
@@ -41,8 +42,7 @@ Device structure is:
 		width: <toWidth>,
 		height: <toHeight>
 	},
-	k: <k>,
-	setDevice: <Boolean>
+	k: <k>
 	}
 ```
 
@@ -61,13 +61,35 @@ Device structure is:
 `k`: Additional k for rem calculation.
 
 `setDevice`: Boolean, if true adaptive will set class or no-class and deviceType based on device name.
+
+You also can create many breakpoints for one device by adding name to device, for example:
+```json
+{
+    "desktop:wide": {
+        "rem": 10,
+        "from": {
+            "width": 1366
+        }
+    },
+    "desktop:thin": {
+        "k": 0.75,
+        "base": {
+            "width": 1008
+        },
+        "to": {
+            "width": 1365
+        }
+    }
+}
+```
+In this case both breakpoints will have `desktop` global class (and `$adaptive.is` of course), but two various rem calculations.
 ### Usage
 You can use global classes in your styles:
 ```stylus
 .someblock
     background-color: blue
     .mobile &
-      background-color: red
+        background-color: red
 ```
 Or conditions in vue template:
 ```vue

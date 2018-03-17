@@ -20,7 +20,8 @@ export default {
 		for (let device in config) {
 			if (config.hasOwnProperty(device)) {
 				_.defaults(config[device], defaultConfig)
-				if (config[device].setDevice) deviceList[device] = false
+				device = device.split(':')[0]
+				if (!deviceList.hasOwnProperty(device)) deviceList[device] = false
 			}
 		}
 		console.log(deviceList)

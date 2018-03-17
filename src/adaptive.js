@@ -32,10 +32,13 @@ export default class {
 				height: window.innerHeight
 			}
 		}
+		let newDeviceList = {}
 		// Setting viewport size
 		if (this.VM.$data.width !== cache.window.width) this.VM.$data.width = cache.window.width
 		if (this.VM.$data.height !== cache.window.height) this.VM.$data.height = cache.window.height
 		_.forEach(this.config, (device, name) => {
+			// Getting device name
+			name = name.split(':')[0]
 			// Caching elements viewport
 			let data
 			if (_.isString(device.element) && !cache.hasOwnProperty(device.element)) {
@@ -54,16 +57,7 @@ export default class {
 				// Testing max viewport
 				device.to && (device.to.width <= data.width || device.to.height <= data.height))
 			// Testing classes
-			if (device.setDevice) {
-				let oldClass = this.VM.$data.is[name] ? name : `no-${name}`
-				let newClass = checked ? name : `no-${name}`
-				// Updating classes if changed
-				if (oldClass !== newClass || init) {
-					html.classList.remove(oldClass)
-					html.classList.add(newClass)
-					this.VM.$data.is[name] = checked
-				}
-			}
+			if (!newDeviceList.hasOwnProperty(name) || !newDeviceList[name]) newDeviceList[name] = checked
 			// Scale changing
 			if (checked) {
 				let rem
@@ -85,6 +79,17 @@ export default class {
 				}
 				html.style.fontSize = `${rem}px`
 				this.VM.$data.rem = rem
+			}
+		})
+		// Setting device
+		_.forEach(newDeviceList, (checked, name) => {
+			let oldClass = this.VM.$data.is[name] ? name : `no-${name}`
+			let newClass = checked ? name : `no-${name}`
+			// Updating classes if changed
+			if (oldClass !== newClass || init) {
+				html.classList.remove(oldClass)
+				html.classList.add(newClass)
+				this.VM.$data.is[name] = checked
 			}
 		})
 	}
