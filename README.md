@@ -7,6 +7,9 @@ A rem scale adaptive with breakpoints for Vue.js
 ![npm](https://img.shields.io/npm/l/vue-adaptive.svg?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=for-the-badge)
+![David](https://img.shields.io/david/zmey3301/vue-adaptive.svg?style=for-the-badge)
+![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=for-the-badge)
+
 ## Setup
 
 Install vue-adaptive from **npm**: `npm i vue-adaptive --save`
@@ -21,8 +24,18 @@ import Adaptive from 'vue-adaptive'
 
 Vue.use(Adaptive, config)
 ```
-### Configuration
-Configuration file represents a list of breakpoints (or devices)
+## Configuration
+Configuration file has two parts:
+#### 1. Global configuration
+Configuration file has object named 'global' in it. This object contains all global parameters of plugin.
+```javascript
+global: {
+	throttling: <ms>
+}
+```
+`throttling`: Time in milliseconds, changes the frequency of viewport update. May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
+#### 2. Devices (breakpoints) configuration
+Besides 'global' object configuration file represents a list of breakpoints (or devices)
 
 Device structure is:
 ```
@@ -83,7 +96,7 @@ You also can create many breakpoints for one device by adding name to device, fo
 }
 ```
 In this case both breakpoints will have `desktop` global class (and `$adaptive.is` of course), but two various rem calculations.
-### Usage
+## Usage
 You can use global classes in your styles:
 ```stylus
 .someblock
