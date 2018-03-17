@@ -4,7 +4,7 @@
   "license": "AGPL-3.0",
   "author": "zmey3301 <zmey3301@gmail.com>",
   "main": "dist/index.js",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zmey3301/vue-adaptive.git"
@@ -13,9 +13,9 @@
     "url": "https://github.com/zmey3301/vue-adaptive/issues"
   },
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint src"
+    "build": "babel src --minified --no-comments --out-dir dist/index.js",
+    "prepack": "npm run lint && npm run build",
+    "lint": "eslint --ext .js src"
   },
   "dependencies": {
     "lodash.bind": "^4.2.1",
@@ -23,6 +23,7 @@
     "lodash.foreach": "^4.5.0",
     "lodash.isfunction": "^3.0.9",
     "lodash.isstring": "^4.0.1",
+    "lodash.throttle": "^4.1.1",
     "vue": "^2.5.16"
   },
   "devDependencies": {
