@@ -7,13 +7,13 @@ import Adaptive from './adaptive'
 export default {
 	install (Vue, config) {
 		const defaultConfig = {
-			if				: false,
-			element			: window,
-			rem				: false,
-			from			: false,
-			to				: false,
-			base			: false,
-			k				  : 1,
+			if			: false,
+			element		: window,
+			rem			: false,
+			from		: false,
+			to			: false,
+			base		: false,
+			k			: 1,
 			setDevice	: false
 		}
 		let deviceList = {}
@@ -24,7 +24,6 @@ export default {
 				if (!deviceList.hasOwnProperty(device)) deviceList[device] = false
 			}
 		}
-		console.log(deviceList)
 		let adaptive = new Adaptive(config, deviceList)
 		Vue.mixin({
 			beforeCreate () {
