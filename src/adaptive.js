@@ -63,7 +63,7 @@ export default class {
 	 * @param init
 	 */
 	resize (init = false) {
-		const html = document.getElementsByTagName('html')[0]
+		const html = document.documentElement
 		let cache = {
 			window: {
 				width: window.innerWidth,
