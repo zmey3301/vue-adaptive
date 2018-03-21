@@ -25,9 +25,9 @@ import Adaptive from 'vue-adaptive'
 Vue.use(Adaptive, config)
 ```
 ## Configuration
-Configuration file has two parts:
+Configuration object has two parts:
 #### 1. Global configuration
-Configuration file has object named 'global' in it. This object contains all global parameters of plugin.
+Configuration object has object named 'global' in it. This object contains all global parameters of plugin.
 ```javascript
 global: {
 	throttling: <ms>
@@ -35,7 +35,7 @@ global: {
 ```
 `throttling`: Time in milliseconds, changes the frequency of viewport update. May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
 #### 2. Devices (breakpoints) configuration
-Besides 'global' object configuration file represents a list of breakpoints (or devices)
+Besides 'global' object configuration object represents a list of breakpoints (or devices)
 
 Device structure is:
 ```
