@@ -7,13 +7,8 @@
  * @license     AGPL-3.0
  ******************************************************************************/
 import Vue from 'vue'
-import bind from 'lodash.bind'
 import defaults from 'lodash.defaults'
 import throttle from 'lodash.throttle'
-import isFunction from 'lodash.isfunction'
-import isString from 'lodash.isstring'
-import forEach from 'lodash.foreach'
-import min from 'lodash.min'
 
 export default class {
 	/**
@@ -56,8 +51,8 @@ export default class {
 		this.VM = new Vue({ data })
 
 		// Listening to change events
-		window.addEventListener('resize', throttle(bind(this.resize, this, false), this.globals.throttle))
-		window.addEventListener('orientationchange', bind(this.orientationChange, this))
+		window.addEventListener('resize', throttle(this.resize.bind(this, false), this.globals.throttle))
+		window.addEventListener('orientationchange', this.orientationChange.bind(this))
 		// Initializing Adaptive
 		this.resize(true)
 
@@ -80,63 +75,72 @@ export default class {
 		// Setting viewport size
 		if (this.VM.$data.width !== cache.window.width) this.VM.$data.width = cache.window.width
 		if (this.VM.$data.height !== cache.window.height) this.VM.$data.height = cache.window.height
-		forEach(this.config, (device, name) => {
-			// Getting device name
-			name = name.split(':')[0]
-			// Caching elements viewport
-			let data
-			if (isString(device.element) && !cache.hasOwnProperty(device.element)) {
-				let el = document.querySelector(device.element)
-				data = cache[device.element] = {
-					width: el.innerWidth,
-					height: el.innerHeight
-				}
-			} else if (isString(device.element)) data = cache[device.element]
-			else if (!isString(device.element)) data = cache['window']
-			// Detecting is breakpoints valid
-			// Testing if function
-			let checked = !(device.if && isFunction(device.if) && !device.if(data) ||
-				// Testing min viewport
-				device.from && (device.from.width > data.width || device.from.height > data.height) ||
-				// Testing max viewport
-				device.to && (device.to.width <= data.width || device.to.height <= data.height))
-			// Testing classes
-			if (!newDeviceList.hasOwnProperty(name) || !newDeviceList[name]) newDeviceList[name] = checked
-			// Scale changing
-			if (checked) {
-				let rem
-				// Setting static rem
-				if (device.rem) {
-					rem = device.rem
-					// Setting dynamic rem
-				} else if (device.base) {
-					let remBases = []
-					if (device.base.width) {
-						remBases.push(data.width / device.base.width)
+		for (let name in this.config) {
+			if (this.config.hasOwnProperty(name)) {
+				let device = config[name]
+				// Getting device name
+				name = name.split(':')[0]
+				// Caching elements viewport
+				let data
+				if (typeof device.element === 'string' && !cache.hasOwnProperty(device.element)) {
+					let el = document.querySelector(device.element)
+					data = cache[device.element] = {
+						width: el.innerWidth,
+						height: el.innerHeight
 					}
-					if (device.base.height) {
-						remBases.push(data.height / device.base.height)
+				} else if (typeof device.element === 'string') data = cache[device.element]
+				else if (typeof device.element !== 'string') data = cache['window']
+				// Detecting is breakpoints valid
+				// Testing if function
+				let checked = !(device.if && typeof device.if === 'function' && !device.if(data) ||
+					// Testing min viewport
+					device.from && (device.from.width > data.width || device.from.height > data.height) ||
+					// Testing max viewport
+					device.to && (device.to.width <= data.width || device.to.height <= data.height))
+				// Testing classes
+				if (!newDeviceList.hasOwnProperty(name) || !newDeviceList[name]) newDeviceList[name] = checked
+				// Scale changing
+				if (checked) {
+					let rem
+					// Setting static rem
+					if (device.rem) {
+						rem = device.rem
+						// Setting dynamic rem
+					} else if (device.base) {
+						let remBases = []
+						if (device.base.width) {
+							remBases.push(data.width / device.base.width)
+						}
+						if (device.base.height) {
+							remBases.push(data.height / device.base.height)
+						}
+						let remBase = Math.min(...remBases)
+						let k = device.k || 1
+						rem = remBase * k * 10
 					}
-					let remBase = min(remBases)
-					let k = device.k || 1
-					rem = remBase * k * 10
-				}
-				if (rem !== this.VM.$data.rem) {
-					html.style.fontSize = `${rem}px`
-					this.VM.$data.rem = rem
+					if (rem !== this.VM.$data.rem) {
+						html.style.fontSize = `${rem}px`
+						this.VM.$data.rem = rem
+					}
 				}
 			}
-		})
+		}
 		// Setting device
-		forEach(newDeviceList, (checked, name) => {
-			let oldClass = this.VM.$data.is[name] ? name : `no-${name}`
-			let newClass = checked ? name : `no-${name}`
-			// Updating classes if changed
-			if (oldClass !== newClass || init) {
-				if (!init) html.classList.remove(oldClass)
-				html.classList.add(newClass)
-				this.VM.$data.is[name] = checked
+		for (let name in newDeviceList) {
+			if (newDeviceList.hasOwnProperty(name)) {
+				let checked = newDeviceList[name]
+				let oldClass = this.VM.$data.is[name] ? name : `no-${name}`
+				let newClass = checked ? name : `no-${name}`
+				// Updating classes if changed
+				if (oldClass !== newClass || init) {
+					if (!init) html.classList.remove(oldClass)
+					html.classList.add(newClass)
+					this.VM.$data.is[name] = checked
+				}
 			}
+		}
+		forEach(newDeviceList, (checked, name) => {
+
 		})
 	}
 
