@@ -6,8 +6,14 @@
  * @date         17.3.2018
  * @license     AGPL-3.0
  ******************************************************************************/
-import Vue from "vue"
-import _ from 'lodash'
+import Vue from 'vue'
+import bind from 'lodash.bind'
+import defaults from 'lodash.defaults'
+import throttle from 'lodash.throttle'
+import isFunction from 'lodash.isfunction'
+import isString from 'lodash.isstring'
+import forEach from 'lodash.foreach'
+import min from 'lodash.min'
 
 export default class {
 	/**
@@ -30,12 +36,12 @@ export default class {
 			k: 1
 		}
 		// Global config
-		this.globals = _.defaults(config.global, defaultGlobal)
+		this.globals = defaults(config.global, defaultGlobal)
 		delete config.global
 		let deviceList = {}
 		for (let device in config) {
 			if (config.hasOwnProperty(device)) {
-				_.defaults(config[device], defaultConfig)
+				defaults(config[device], defaultConfig)
 				device = device.split(':')[0]
 				if (!deviceList.hasOwnProperty(device)) deviceList[device] = false
 			}
@@ -50,8 +56,8 @@ export default class {
 		this.VM = new Vue({ data })
 
 		// Listening to change events
-		window.addEventListener('resize', _.throttle(_.bind(this.resize, this, false), this.globals.throttle))
-		window.addEventListener('orientationchange', _.bind(this.orientationChange, this))
+		window.addEventListener('resize', throttle(bind(this.resize, this, false), this.globals.throttle))
+		window.addEventListener('orientationchange', bind(this.orientationChange, this))
 		// Initializing Adaptive
 		this.resize(true)
 
@@ -74,22 +80,22 @@ export default class {
 		// Setting viewport size
 		if (this.VM.$data.width !== cache.window.width) this.VM.$data.width = cache.window.width
 		if (this.VM.$data.height !== cache.window.height) this.VM.$data.height = cache.window.height
-		_.forEach(this.config, (device, name) => {
+		forEach(this.config, (device, name) => {
 			// Getting device name
 			name = name.split(':')[0]
 			// Caching elements viewport
 			let data
-			if (_.isString(device.element) && !cache.hasOwnProperty(device.element)) {
+			if (isString(device.element) && !cache.hasOwnProperty(device.element)) {
 				let el = document.querySelector(device.element)
 				data = cache[device.element] = {
 					width: el.innerWidth,
 					height: el.innerHeight
 				}
-			} else if (_.isString(device.element)) data = cache[device.element]
-			else if (!_.isString(device.element)) data = cache['window']
+			} else if (isString(device.element)) data = cache[device.element]
+			else if (!isString(device.element)) data = cache['window']
 			// Detecting is breakpoints valid
 			// Testing if function
-			let checked = !(device.if && _.isFunction(device.if) && !device.if(data) ||
+			let checked = !(device.if && isFunction(device.if) && !device.if(data) ||
 				// Testing min viewport
 				device.from && (device.from.width > data.width || device.from.height > data.height) ||
 				// Testing max viewport
@@ -102,7 +108,7 @@ export default class {
 				// Setting static rem
 				if (device.rem) {
 					rem = device.rem
-				// Setting dynamic rem
+					// Setting dynamic rem
 				} else if (device.base) {
 					let remBases = []
 					if (device.base.width) {
@@ -111,7 +117,7 @@ export default class {
 					if (device.base.height) {
 						remBases.push(data.height / device.base.height)
 					}
-					let remBase = _.min(remBases)
+					let remBase = min(remBases)
 					let k = device.k || 1
 					rem = remBase * k * 10
 				}
@@ -122,7 +128,7 @@ export default class {
 			}
 		})
 		// Setting device
-		_.forEach(newDeviceList, (checked, name) => {
+		forEach(newDeviceList, (checked, name) => {
 			let oldClass = this.VM.$data.is[name] ? name : `no-${name}`
 			let newClass = checked ? name : `no-${name}`
 			// Updating classes if changed
