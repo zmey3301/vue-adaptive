@@ -33,6 +33,7 @@
   "keywords": [
     "vue",
     "adaptive",
-    "scale"
+    "scale",
+    "breakpoints"
   ]
 }
