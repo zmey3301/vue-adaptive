@@ -169,7 +169,7 @@ export default class {
 				this.resize()
 				noChangeCount = 0
 			}
-		})
+		}, 17)
 		let timeout = setTimeout(function () {
 			end()
 		}, NO_END_TIMEOUT)
