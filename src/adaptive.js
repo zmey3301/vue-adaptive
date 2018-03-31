@@ -67,11 +67,12 @@ export default class {
 		const html = document.documentElement
 		let cache = {
 			window: {
-				width: window.innerWidth,
-				height: window.innerHeight
+				width: html.offsetWidth,
+				height: html.offsetHeight
 			}
 		}
 		let newDeviceList = {}
+		let rem = 10
 		// Setting viewport size
 		if (this.VM.$data.width !== cache.window.width) this.VM.$data.width = cache.window.width
 		if (this.VM.$data.height !== cache.window.height) this.VM.$data.height = cache.window.height
@@ -101,7 +102,6 @@ export default class {
 				if (!newDeviceList.hasOwnProperty(name) || !newDeviceList[name]) newDeviceList[name] = checked
 				// Scale changing
 				if (checked) {
-					let rem
 					// Setting static rem
 					if (device.rem) {
 						rem = device.rem
@@ -117,10 +117,6 @@ export default class {
 						let remBase = Math.min(...remBases)
 						let k = device.k || 1
 						rem = remBase * k * 10
-					}
-					if (rem !== this.VM.$data.rem) {
-						html.style.fontSize = `${rem}px`
-						this.VM.$data.rem = rem
 					}
 				}
 			}
@@ -138,6 +134,10 @@ export default class {
 					this.VM.$data.is[name] = checked
 				}
 			}
+		}
+		if (rem !== this.VM.$data.rem) {
+			html.style.fontSize = `${rem}px`
+			this.VM.$data.rem = rem
 		}
 	}
 
