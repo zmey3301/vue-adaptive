@@ -77,7 +77,7 @@ export default class {
 		if (this.VM.$data.height !== cache.window.height) this.VM.$data.height = cache.window.height
 		for (let name in this.config) {
 			if (this.config.hasOwnProperty(name)) {
-				let device = config[name]
+				let device = this.config[name]
 				// Getting device name
 				name = name.split(':')[0]
 				// Caching elements viewport
@@ -139,9 +139,6 @@ export default class {
 				}
 			}
 		}
-		forEach(newDeviceList, (checked, name) => {
-
-		})
 	}
 
 	/**
