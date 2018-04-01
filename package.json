@@ -3,7 +3,7 @@
   "description": "A rem scale adaptive with breakpoints for Vue.js",
   "license": "AGPL-3.0",
   "author": "zmey3301 <zmey3301@gmail.com>",
-  "main": "dist/index.js",
+  "main": "dist/adaptive.bundle.js",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -13,8 +13,8 @@
     "url": "https://github.com/zmey3301/vue-adaptive/issues"
   },
   "scripts": {
-    "build": "babel src --minified --no-comments --out-dir dist",
-    "prepack": "npm run lint && npm run build",
+    "build": "webpack  --progress --config webpack.config.js --mode production",
+    "prepack": "npm run build",
     "lint": "eslint --ext .js src"
   },
   "dependencies": {
@@ -23,11 +23,15 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "babel-loader": "^8.0.0-beta",
     "eslint": "^4.18.2",
-    "eslint-cli": "^1.1.1"
+    "eslint-cli": "^1.1.1",
+    "eslint-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13"
   },
   "homepage": "https://github.com/zmey3301/vue-adaptive#readme",
   "keywords": [
