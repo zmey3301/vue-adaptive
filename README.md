@@ -56,7 +56,7 @@ Device structure is:
 		height: <toHeight>
 	},
 	k: <k>
-	}
+}
 ```
 
 `element`: String, contains element selector that will be used for detecting viewport. Default: window.

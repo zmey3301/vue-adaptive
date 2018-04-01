@@ -19,7 +19,9 @@ export default class {
 	constructor (config) {
 		// Defaults
 		const defaultGlobal = {
-			throttle: 17
+			throttle: 17,
+			orientationTestCount: 50,
+			orientationChangeTimeout: 1000
 		}
 		const defaultConfig = {
 			if: false,
@@ -145,9 +147,7 @@ export default class {
 	 * Handle orientationChange event
 	 */
 	orientationChange () {
-		const COUNT_TO_END		= 50
-		const NO_END_TIMEOUT 	= 1000
-		let noChangeCount		= 0
+		let noChangeCount = 0
 
 		let end = function () {
 			clearInterval(interval)
@@ -155,12 +155,13 @@ export default class {
 			interval = null
 			timeout = null
 		}
+		let html = document.documentElement
 		let interval = setInterval(() => {
-			let currHeight = window.innerHeight
-			let currWidth = window.innerWidth
+			let currHeight = html.offsetHeight
+			let currWidth = html.offsetWidth
 			if (currWidth === this.VM.$data.width && currHeight === this.VM.$data.height) {
 				noChangeCount++
-				if (noChangeCount === COUNT_TO_END) {
+				if (noChangeCount === this.globals.orientationTestCount) {
 					end()
 				}
 			} else {
@@ -169,9 +170,9 @@ export default class {
 				this.resize()
 				noChangeCount = 0
 			}
-		})
+		}, this.globals.throttle)
 		let timeout = setTimeout(function () {
 			end()
-		}, NO_END_TIMEOUT)
+		}, this.globals.orientationChangeTimeout)
 	}
 }
