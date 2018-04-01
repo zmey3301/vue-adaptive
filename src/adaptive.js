@@ -6,17 +6,17 @@
  * @date         24.3.2018
  * @license     AGPL-3.0-or-later
  ******************************************************************************/
-import Vue from 'vue'
 import defaults from 'lodash.defaults'
 import throttle from 'lodash.throttle'
 
 export default class {
 	/**
 	 * Splitting configuration and creating eventListeners
-	 * @param config
-	 * @returns {Record<string, any>}
+	 * @param Vue
+	 * @param config: adaptive configuration file
+	 * @returns {Record<string, any>}: reactive model, based on Vue
 	 */
-	constructor (config) {
+	constructor (Vue, config) {
 		// Defaults
 		const defaultGlobal = {
 			throttle: 17,
@@ -63,7 +63,7 @@ export default class {
 
 	/**
 	 * Handle resize of viewport
-	 * @param init
+	 * @param init: initialize flag
 	 */
 	resize (init = false) {
 		const html = document.documentElement
