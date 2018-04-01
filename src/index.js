@@ -15,7 +15,7 @@ export default {
 	 * @param config
 	 */
 	install (Vue, config) {
-		let adaptive = new Adaptive(config)
+		let adaptive = new Adaptive(Vue, config)
 		Vue.mixin({
 			beforeCreate () {
 				this.$adaptive = adaptive

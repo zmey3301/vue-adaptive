@@ -17,11 +17,6 @@
     "prepack": "npm run build",
     "lint": "eslint --ext .js src"
   },
-  "dependencies": {
-    "lodash.defaults": "^4.2.0",
-    "lodash.throttle": "^4.1.1",
-    "vue": "2.x"
-  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.42",
     "@babel/preset-env": "^7.0.0-beta.42",
@@ -29,7 +24,8 @@
     "eslint": "^4.18.2",
     "eslint-cli": "^1.1.1",
     "eslint-loader": "^2.0.0",
-    "uglifyjs-webpack-plugin": "^1.2.4",
+    "lodash.defaults": "^4.2.0",
+    "lodash.throttle": "^4.1.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
   },
