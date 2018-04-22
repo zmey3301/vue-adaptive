@@ -35,5 +35,8 @@
     "adaptive",
     "scale",
     "breakpoints"
-  ]
+  ],
+  "dependencies": {
+    "vue": "2.x"
+  }
 }
