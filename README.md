@@ -3,12 +3,11 @@
 A rem scale adaptive with breakpoints for Vue.js
 
 [![npm](https://img.shields.io/npm/v/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
-![npm](https://img.shields.io/npm/dt/vue-adaptive.svg?style=for-the-badge)
-![npm](https://img.shields.io/npm/l/vue-adaptive.svg?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=for-the-badge)
-![David](https://img.shields.io/david/zmey3301/vue-adaptive.svg?style=for-the-badge)
-![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=for-the-badge)
+[![npm](https://img.shields.io/npm/dt/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
+[![AGPL 3.0](https://img.shields.io/npm/l/vue-adaptive.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/commits/master)
+[![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://david-dm.org/zmey3301/vue-adaptive?type=dev)
 
 ## Setup
 
