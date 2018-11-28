@@ -8,6 +8,7 @@ A rem scale adaptive with breakpoints for Vue.js
 [![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/commits/master)
 [![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://david-dm.org/zmey3301/vue-adaptive?type=dev)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fzmey3301%2Fvue-adaptive.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fzmey3301%2Fvue-adaptive?ref=badge_shield)
 
 ## Setup
 
@@ -119,3 +120,7 @@ computed = {
 }
 ```
 `$adaptive` has `height`, `width`, `rem` numeric values and `is` object, containing all device names with boolean value.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fzmey3301%2Fvue-adaptive.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fzmey3301%2Fvue-adaptive?ref=badge_large)
