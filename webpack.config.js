@@ -3,7 +3,7 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		filename: 'adaptive.bundle.js',
-		libraryTarget: 'umd2'
+		libraryTarget: 'umd'
 	},
 	module: {
 		rules: [

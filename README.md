@@ -27,9 +27,11 @@ Vue.use(Adaptive, config)
 Configuration object has two parts:
 #### 1. Global configuration
 Configuration object has object named 'global' in it. This object contains all global parameters of plugin.
-```javascript
-global: {
-	throttling: <ms>
+```json
+{
+    "global": {
+        "throttling": 300
+    }
 }
 ```
 `throttling`: Time in milliseconds, changes the frequency of viewport update. May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
@@ -58,7 +60,7 @@ Device structure is:
 }
 ```
 
-`element`: String, contains element selector that will be used for detecting viewport. Default: window.
+`element`: String or HTMLElement, contains element selector that will be used for detecting viewport. Default: window.
 
 `if`: Condition, `functions(viewport)`, viewport contains width and height of element, function affects device type.
 
