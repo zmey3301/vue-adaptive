@@ -9,4 +9,5 @@ node_modules/
 .idea/
 .eslintrc.json
 .babelrc
+*.tgz
 
