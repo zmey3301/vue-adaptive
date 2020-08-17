@@ -1,0 +1,20 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <JSCodeStyleSettings version="0">
+      <option name="USE_SEMICOLON_AFTER_STATEMENT" value="false" />
+      <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    </JSCodeStyleSettings>
+    <MarkdownNavigatorCodeStyleSettings>
+      <option name="RIGHT_MARGIN" value="72" />
+    </MarkdownNavigatorCodeStyleSettings>
+    <codeStyleSettings language="JavaScript">
+      <option name="INDENT_CASE_FROM_SWITCH" value="false" />
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+      <option name="ALIGN_MULTILINE_FOR" value="false" />
+      <option name="SPACE_BEFORE_METHOD_PARENTHESES" value="true" />
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
