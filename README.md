@@ -2,12 +2,15 @@
 
 A rem scale adaptive with breakpoints for Vue.js
 
-[![npm](https://img.shields.io/npm/v/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
-[![npm](https://img.shields.io/npm/dt/vue-adaptive.svg?style=for-the-badge)](https://www.npmjs.com/package/vue-adaptive)
-[![AGPL 3.0](https://img.shields.io/npm/l/vue-adaptive.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://github.com/zmey3301/vue-adaptive/commits/master)
-[![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=for-the-badge)](https://david-dm.org/zmey3301/vue-adaptive?type=dev)
+[![npm](https://img.shields.io/npm/v/vue-adaptive.svg?style=flat-square)](https://www.npmjs.com/package/vue-adaptive)
+[![npm](https://img.shields.io/npm/dt/vue-adaptive.svg?style=flat-square)](https://www.npmjs.com/package/vue-adaptive)
+[![npm bundle size (version)](https://img.shields.io/bundlephobia/min/vue-adaptive/1.4.1?style=flat-square)](https://bundlephobia.com/result?p=vue-adaptive@1.4.1)
+[![Inline docs](http://inch-ci.org/github/zmey3301/vue-adaptive.svg?branch=master&style=flat-square)](http://inch-ci.org/github/zmey3301/vue-adaptive)
+[![AGPL 3.0](https://img.shields.io/npm/l/vue-adaptive.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg?style=flat-square)](https://github.com/zmey3301/vue-adaptive/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg?style=flat-square)](https://github.com/zmey3301/vue-adaptive/commits/master)
+[![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg?style=flat-square)](https://david-dm.org/zmey3301/vue-adaptive?type=dev)
+[![CodeFactor](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive/badge?style=flat-square)](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive)
 
 ## Setup
 

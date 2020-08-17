@@ -46,23 +46,28 @@ export default class Adaptive {
 
 	/**
 	 * Vue plugin install function
-	 * @param Vue
-	 * @param {{string: device}} config: adaptive configuration file
+	 * @param Vue - Vue framework object
+	 * @param {{string: device}} config - adaptive configuration file
 	 * @param {globalConf} config.global - Plugin's instance-level config
 	 */
 	static install (Vue, config) {
 		const adaptive = new this(Vue, config)
 		Vue.adaptive = adaptive
 		Object.defineProperty(Vue.prototype, "$adaptive", {
+			/**
+			 * Adaptive current state getter
+			 * @returns {Adaptive} - Adaptive current state observable
+			 */
 			get: () => adaptive
 		})
 	}
+
 	/**
 	 * Splitting configuration and creating eventListeners
-	 * @param Vue
+	 * @param Vue - Vue framework object
 	 * @param {{string: device}} config - adaptive configuration file
 	 * @param {globalConf} config.global - Plugin's instance-level config
-	 * @returns {Record<string, *>}: reactive model, based on Vue
+	 * @returns {Record<string, >} - reactive model, based on Vue
 	 */
 	constructor (Vue, config) {
 		// Defaults
@@ -100,7 +105,12 @@ export default class Adaptive {
 		}
 		const vueVersionArray = Vue.version.split(".")
 		/**
-		 * @type {{is: {string: boolean}, width: number, height: number, rem: number}}
+		 * Current adaptive data
+		 * @type {object}
+		 * @property {object.<string,boolean>} is - devices status
+		 * @property {number} width - current viewport width
+		 * @property {number} height - current viewport height
+		 * @property {number} rem - current rem size in px
 		 */
 		this.data = vueVersionArray[0] === 2 && vueVersionArray[1] >= 6
 			? Vue.observable(data)
@@ -120,7 +130,6 @@ export default class Adaptive {
 	 */
 	resize () {
 		const documentElement = document.documentElement
-		const documentElementClassList = new ClassList(documentElement)
 		const viewport = {
 			width: documentElement.offsetWidth,
 			height: documentElement.offsetHeight
@@ -185,7 +194,18 @@ export default class Adaptive {
 				}
 			}
 		}
-		// Setting device
+
+		this.updateDOM(newDeviceList, rem)
+	}
+
+	/**
+	 * Update documentElement classes and font size
+	 * @param {object.<string,boolean>} newDeviceList - new devices state
+	 * @param {number} rem - new rem size calculation
+	 */
+	updateDOM (newDeviceList, rem) {
+		const documentElementClassList = new ClassList(document.documentElement)
+
 		for (const name in newDeviceList) {
 			if (newDeviceList.hasOwnProperty(name)) {
 				let checked = newDeviceList[name]
@@ -200,7 +220,7 @@ export default class Adaptive {
 			}
 		}
 		if (rem !== this.data.rem) {
-			documentElement.style.fontSize = `${rem}px`
+			document.documentElement.style.fontSize = `${rem}px`
 			this.data.rem = rem
 		}
 	}
