@@ -3,8 +3,8 @@
   "description": "A rem scale adaptive with breakpoints for Vue.js",
   "license": "AGPL-3.0",
   "author": "zmey3301 <zmey3301@gmail.com>",
+  "version": "1.4.1",
   "main": "dist/adaptive.bundle.js",
-  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zmey3301/vue-adaptive.git"
