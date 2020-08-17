@@ -1,15 +1,16 @@
 /**************************************************************************************************
- * Copyright © 2017-2019 Mikhail Perelygin <zmey3301@gmail.com>. All rights reserved.             *
+ * Copyright © 2017-2020 Mikhail Perelygin <zmey3301@gmail.com>. All rights reserved.             *
  * Huge thanks to:                                                                                *
  *     Sergey Koshevarov <gondragos@gmail.com> for plugin idea;                                   *
  *     Maxim Logvinov <skovorodker.rekdo@gmail.com> for optimisation ideas;                       *
  * Program is distributed under the terms of the GNU Affero General Public License.               *
  *                                                                                                *
- * @date        4.10.2019                                                                         *
+ * @date        17.8.2020                                                                         *
  * @license     AGPL-3.0-or-later                                                                 *
  **************************************************************************************************/
 import defaults from "lodash.defaults"
 import throttle from "lodash.throttle"
+import ClassList from "classlist"
 
 export default class Adaptive {
 	/**
@@ -118,10 +119,11 @@ export default class Adaptive {
 	 * Handle resize of viewport
 	 */
 	resize () {
-		const html = document.documentElement
+		const documentElement = document.documentElement
+		const documentElementClassList = new ClassList(documentElement)
 		const viewport = {
-			width: html.offsetWidth,
-			height: html.offsetHeight
+			width: documentElement.offsetWidth,
+			height: documentElement.offsetHeight
 		}
 		const cache = {
 			keys: [ window ],
@@ -143,8 +145,8 @@ export default class Adaptive {
 				// Caching elements viewport
 				const elementCacheIndex = cache.keys.indexOf(device.element)
 				let data
-				if (elementCacheIndex + 1) {
-					const el = device.element instanceof HTMLElement
+				if (!elementCacheIndex + 1) {
+					const el = device.element instanceof HTMLElement || device.element instanceof Window
 						? device.element
 						: document.querySelector(device.element)
 					data = {
@@ -190,15 +192,15 @@ export default class Adaptive {
 				let oldClass = this.data.is[name] ? name : `no-${name}`
 				let newClass = checked ? name : `no-${name}`
 				// Updating classes if changed
-				if (oldClass !== newClass || !html.classList.contains(newClass)) {
-					if (html.classList.contains(oldClass)) html.classList.remove(oldClass)
-					html.classList.add(newClass)
+				if (oldClass !== newClass || !documentElementClassList.contains(newClass)) {
+					if (documentElementClassList.contains(oldClass)) documentElementClassList.remove(oldClass)
+					documentElementClassList.add(newClass)
 					this.data.is[name] = checked
 				}
 			}
 		}
 		if (rem !== this.data.rem) {
-			html.style.fontSize = `${rem}px`
+			documentElement.style.fontSize = `${rem}px`
 			this.data.rem = rem
 		}
 	}

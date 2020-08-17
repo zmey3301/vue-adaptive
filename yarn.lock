@@ -1487,6 +1487,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classlist@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/classlist/-/classlist-2.0.0.tgz#b471a215123ee1cdc2ce11ba3ca8e090af7c9a86"
+  integrity sha512-u8w9pd3kGZsy2M2NkN01lZA/ykQi0AkopSgQN9Un+7gvieggGzyR5G+19ggedCLLQ5D/eIo/FrP+1b8f7lp04Q==
+
 cliui@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-5.0.0.tgz#deefcfdb2e800784aa34f46fa08e06851c7bbbc5"

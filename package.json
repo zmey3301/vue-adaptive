@@ -21,6 +21,7 @@
     "@babel/core": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "babel-loader": "^8.0.0-beta.4",
+    "classlist": "^2.0.0",
     "eslint": "^7.7.0",
     "eslint-cli": "^1.1.1",
     "eslint-loader": "^4.0.2",
