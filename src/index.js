@@ -8,7 +8,6 @@
  * @date        17.8.2020                                                                         *
  * @license     AGPL-3.0-or-later                                                                 *
  **************************************************************************************************/
-import defaults from "lodash.defaults"
 import throttle from "lodash.throttle"
 import ClassList from "classlist"
 
@@ -86,12 +85,12 @@ export default class Adaptive {
 			k: 1
 		}
 		// Global config
-		this.globals = defaults(config.global, defaultGlobal)
+		this.globals = Object.assign(defaultGlobal, config.global)
 		delete config.global
 		const deviceList = {}
 		for (let device in config) {
 			if (config.hasOwnProperty(device)) {
-				defaults(config[device], defaultConfig)
+				config[device] = Object.assign({}, defaultConfig, config[device])
 				device = device.split(":")[0]
 				if (!deviceList.hasOwnProperty(device)) deviceList[device] = false
 			}
@@ -129,10 +128,9 @@ export default class Adaptive {
 	 * Handle resize of viewport
 	 */
 	resize () {
-		const documentElement = document.documentElement
 		const viewport = {
-			width: documentElement.offsetWidth,
-			height: documentElement.offsetHeight
+			width: window.innerWidth,
+			height: window.innerHeight
 		}
 		const cache = {
 			keys: [ window ],
@@ -154,8 +152,8 @@ export default class Adaptive {
 				// Caching elements viewport
 				const elementCacheIndex = cache.keys.indexOf(device.element)
 				let data
-				if (!elementCacheIndex + 1) {
-					const el = device.element instanceof HTMLElement || device.element instanceof Window
+				if (elementCacheIndex === -1) {
+					const el = device.element instanceof HTMLElement || device.element === window
 						? device.element
 						: document.querySelector(device.element)
 					data = {
@@ -237,10 +235,9 @@ export default class Adaptive {
 			interval = null
 			timeout = null
 		}
-		const html = document.documentElement
 		let interval = setInterval(() => {
-			const currHeight = html.offsetHeight
-			const currWidth = html.offsetWidth
+			const currHeight = window.innerHeight
+			const currWidth = window.innerWidth
 			if (currWidth === this.data.width && currHeight === this.data.height) {
 				noChangeCount++
 				if (noChangeCount === this.globals.orientationTestCount) {

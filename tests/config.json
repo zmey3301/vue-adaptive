@@ -1,0 +1,54 @@
+{
+  "global": {
+    "orientationChangeTimeout": 1000,
+    "throttle": 17
+  },
+  "desktop:wide": {
+    "rem": 10,
+    "from": {
+      "width": 1440
+    }
+  },
+  "desktop:thin": {
+    "k": 0.75,
+    "from": {
+      "width": 1008
+    },
+    "base": {
+      "width": 1008
+    },
+    "to": {
+      "width": 1440
+    }
+  },
+  "tablet": {
+    "rem": 10,
+    "from": {
+      "width": 752
+    },
+    "to": {
+      "width": 1008
+    }
+  },
+  "mobile": {
+    "rem": 10,
+    "from": {
+      "width": 305
+    },
+    "to": {
+      "width": 751
+    }
+  },
+  "body": {
+    "element": "body",
+    "rem": 10,
+    "from": {
+      "width": 100,
+      "height": 100
+    },
+    "to": {
+      "width": 100,
+      "height": 100
+    }
+  }
+}
