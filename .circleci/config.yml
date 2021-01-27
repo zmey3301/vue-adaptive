@@ -1,14 +1,28 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+commands:
+  install-deps:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 jobs:
   lint:
     executor:
       name: node/default
     steps:
       - checkout
-      - node/install-packages:
-          override-ci-command: yarn install --freeze-lockfile
+      - install-deps
       - run:
           command: yarn lint
   test:
@@ -16,11 +30,11 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/install-packages:
-          override-ci-command: yarn install --freeze-lockfile
+      - install-deps
       - run:
           command: yarn test
 workflows:
   lint+test:
     jobs:
+      - lint
       - test
