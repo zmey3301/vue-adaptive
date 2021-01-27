@@ -24,23 +24,23 @@ function rotateDevice (duration = 500, steps = 100) {
 	}, duration / steps)
 	orientationChange()
 	window.dispatchEvent(new Event("orientationchange"))
-
 }
 
+const localVue = createLocalVue()
+localVue.use(Adaptive, config)
+
 describe("Adaptive events handling", () => {
-	const localVue = createLocalVue()
-	localVue.use(Adaptive, config)
 	const wrapper = mount(Test, {localVue})
 
 	beforeEach(() => {
 		resizeViewport(1024, 768)
 	}, 100)
 
-	test("Vue.adaptive should be equal to the instance's $adaptive", () => {
+	test("Vue.adaptive should be equal to the instances $adaptive", () => {
 		expect(localVue.adaptive).toEqual(wrapper.vm.$adaptive)
 	})
 
-	test("Vue.adaptive should stay equal to the instance's $adaptive after resize", done => {
+	test("Vue.adaptive should stay equal to the instances $adaptive after resize", done => {
 		const width = 500
 		resizeViewport(width)
 		setTimeout(() => {
@@ -112,4 +112,70 @@ describe("Adaptive events handling", () => {
 	})
 })
 
+describe("Adaptive breakpoint matching", () => {
+
+	test("Adaptive should select breakpoint on dimensions match", done => {
+		resizeViewport(1000, 600)
+		setTimeout(() => {
+			try {
+				expect(localVue.adaptive.is).toEqual({
+					desktop: false,
+					tablet: true,
+					mobile: false
+				})
+
+				expect(document.documentElement.className).toInclude("tablet")
+				expect(document.documentElement.className).toIncludeMultiple(["no-desktop", "no-mobile"])
+
+				expect(document.documentElement.className).not.toInclude("no-tablet")
+				done()
+			} catch (error) {
+				done(error)
+			}
+		}, 100)
+	})
+
+	test("Adaptive should not select breakpoint on one dimension match", done => {
+		function checkBreakpoints () {
+			expect(localVue.adaptive.is.tablet).toBeFalse()
+			expect(document.documentElement.className).toInclude("no-tablet")
+		}
+		resizeViewport(1000, 1000)
+		setTimeout(() => {
+			try {
+				checkBreakpoints()
+				resizeViewport(1100, 600)
+				setTimeout(() => {
+					try {
+						checkBreakpoints()
+						done()
+					} catch (error) {
+						done(error)
+					}
+				}, 100)
+			} catch (error) {
+				done(error)
+			}
+		}, 100)
+	})
+
+	test("Adaptive should set breakpoint if only one of suffixed breakpoints match", done => {
+		resizeViewport(1500, 768)
+		setTimeout(() => {
+			try {
+				expect(localVue.adaptive.is.desktop).toBeTrue()
+				expect(document.documentElement.className).toInclude("desktop")
+				expect(document.documentElement.className).not.toInclude("no-desktop")
+				done()
+			} catch (error) {
+				done(error)
+			}
+		}, 100)
+	})
+
+	test("Adaptive should not add device classes if noDevice set to false", () => {
+		expect(localVue.adaptive.is).not.toHaveProperty("body")
+		expect(document.documentElement.className).not.toMatch(/(?:^| )(?:no-)?body(?:$| )/)
+	})
+})
 // TODO: add breakpoint matching and rem calculation test scopes

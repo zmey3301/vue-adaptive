@@ -7,7 +7,8 @@
     "rem": 10,
     "from": {
       "width": 1440
-    }
+    },
+    "setDevice": true
   },
   "desktop:thin": {
     "k": 0.75,
@@ -19,16 +20,20 @@
     },
     "to": {
       "width": 1440
-    }
+    },
+    "setDevice": true
   },
   "tablet": {
     "rem": 10,
     "from": {
-      "width": 752
+      "width": 752,
+      "height": 500
     },
     "to": {
-      "width": 1008
-    }
+      "width": 1008,
+      "height": 700
+    },
+    "setDevice": true
   },
   "mobile": {
     "rem": 10,
@@ -37,7 +42,8 @@
     },
     "to": {
       "width": 751
-    }
+    },
+    "setDevice": true
   },
   "body": {
     "element": "body",
@@ -49,6 +55,7 @@
     "to": {
       "width": 100,
       "height": 100
-    }
+    },
+    "setDevice": false
   }
 }

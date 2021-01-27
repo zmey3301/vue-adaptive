@@ -31,7 +31,7 @@ export default class Adaptive {
 	 * @property {viewport} [base] - base width and height for rem calculation
 	 * @property {viewport} [from] - minimal width and height for setting device
 	 * @property {viewport} [to] - maximal width and height for setting device
-	 * @property {boolean} [setDevice] - class, no-class and device set toggle
+	 * @property {boolean} [setDevice=true] - class, no-class and device set toggle
 	 */
 
 	/**
@@ -82,7 +82,8 @@ export default class Adaptive {
 			from: null,
 			to: null,
 			base: null,
-			k: 1
+			k: 1,
+			setDevice: true
 		}
 		// Global config
 		this.globals = Object.assign(defaultGlobal, config.global)
@@ -90,9 +91,10 @@ export default class Adaptive {
 		const deviceList = {}
 		for (let device in config) {
 			if (config.hasOwnProperty(device)) {
-				config[device] = Object.assign({}, defaultConfig, config[device])
+				const deviceConfig = config[device] = Object.assign({}, defaultConfig, config[device])
+
 				device = device.split(":")[0]
-				if (!deviceList.hasOwnProperty(device)) deviceList[device] = false
+				if (deviceConfig.setDevice && !deviceList.hasOwnProperty(device)) deviceList[device] = false
 			}
 		}
 		this.config = config
@@ -171,7 +173,7 @@ export default class Adaptive {
 					// Testing max viewport
 					device.to && (device.to.width <= data.width || device.to.height <= data.height))
 				// Testing classes
-				if (!newDeviceList.hasOwnProperty(name) || !newDeviceList[name]) newDeviceList[name] = checked
+				if (device.setDevice && !newDeviceList[name]) newDeviceList[name] = checked
 				// Scale changing
 				if (checked) {
 					// Setting static rem
@@ -206,9 +208,9 @@ export default class Adaptive {
 
 		for (const name in newDeviceList) {
 			if (newDeviceList.hasOwnProperty(name)) {
-				let checked = newDeviceList[name]
-				let oldClass = this.data.is[name] ? name : `no-${name}`
-				let newClass = checked ? name : `no-${name}`
+				const checked = newDeviceList[name]
+				const oldClass = this.data.is[name] ? name : `no-${name}`
+				const newClass = checked ? name : `no-${name}`
 				// Updating classes if changed
 				if (oldClass !== newClass || !documentElementClassList.contains(newClass)) {
 					if (documentElementClassList.contains(oldClass)) documentElementClassList.remove(oldClass)
