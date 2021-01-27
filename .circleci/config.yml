@@ -1,0 +1,20 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: '13.14'
+    steps:
+      - checkout
+      - node/install-packages:
+          override-ci-command: yarn install --freeze-lockfile
+      - run:
+          command: yarn lint
+      - run:
+          command: yarn test
+workflows:
+  lint+test:
+    jobs:
+      - test
