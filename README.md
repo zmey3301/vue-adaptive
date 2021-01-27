@@ -26,22 +26,31 @@ import Adaptive from 'vue-adaptive'
 
 Vue.use(Adaptive, config)
 ```
+
 ## Configuration
+
 Configuration object has two parts:
+
 #### 1. Global configuration
+
 Configuration object has object named 'global' in it. This object contains all global parameters of plugin.
+
 ```json
 {
-    "global": {
-        "throttling": 300
-    }
+  "global": {
+    "throttling": 300
+  }
 }
 ```
+
 `throttling`: Time in milliseconds, changes the frequency of viewport update. May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
+
 #### 2. Devices (breakpoints) configuration
+
 Besides 'global' object configuration object represents a list of breakpoints (or devices)
 
 Device structure is:
+
 ```
 <device>: {// Device (and global class) name
     if: <if>,
@@ -80,42 +89,51 @@ Device structure is:
 `setDevice`: Boolean, if true adaptive will set class or no-class and deviceType based on device name.
 
 You also can create many breakpoints for one device by adding name to device, for example:
+
 ```json
 {
-    "desktop:wide": {
-        "rem": 10,
-        "from": {
-            "width": 1366
-        }
-    },
-    "desktop:thin": {
-        "k": 0.75,
-        "from": {
-            "width": 1008
-        },
-        "base": {
-            "width": 1100
-        },
-        "to": {
-            "width": 1365
-        }
+  "desktop:wide": {
+    "rem": 10,
+    "from": {
+      "width": 1366
     }
+  },
+  "desktop:thin": {
+    "k": 0.75,
+    "from": {
+      "width": 1008
+    },
+    "base": {
+      "width": 1100
+    },
+    "to": {
+      "width": 1365
+    }
+  }
 }
 ```
+
 In this case both breakpoints will have `desktop` global class (and `$adaptive.is` of course), but two various rem calculations.
+
 ## Usage
+
 You can use global classes in your styles:
+
 ```stylus
 .someblock
     background-color: blue
     .mobile &
         background-color: red
 ```
+
 Or conditions in vue template:
+
 ```vue
 <div v-show="$adaptive.is.mobile"></div>
 ```
+
 You always can see current viewport and rem value in `$adaptive` inside of your component.
+
 ```vuejs
 computed = {
 	isWidth1600 () {
@@ -123,4 +141,5 @@ computed = {
 	}
 }
 ```
+
 `$adaptive` has `height`, `width`, `rem` numeric values and `is` object, containing all device names with boolean value.

@@ -1,0 +1,14 @@
+arrowParens: avoid
+bracketSpacing: false
+trailingComma: none
+tabWidth: 2
+semi: false
+quoteProps: consistent
+plugins:
+  - prettier-plugin-import-sort
+overrides:
+  - files:
+      - "*.js"
+      - "*.jsx"
+    options:
+      parser: babel

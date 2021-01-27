@@ -1,0 +1,11 @@
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+  ecmaFeatures:
+    impliedStrict: true
+parser: babel-eslint
+extends:
+  - prettier
+rules:
+  eqeqeq: error
+  no-debugger: warn

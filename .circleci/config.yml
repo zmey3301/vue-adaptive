@@ -33,6 +33,8 @@ jobs:
       - install-deps
       - run:
           command: yarn test
+      - store_artifacts:
+          path: coverage
 workflows:
   lint+test:
     jobs:
