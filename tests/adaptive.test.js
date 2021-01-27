@@ -159,7 +159,7 @@ describe("Adaptive breakpoint matching", () => {
 		}, 100)
 	})
 
-	test("Adaptive should set breakpoint if only one of suffixed breakpoints match", done => {
+	test("Adaptive should select breakpoint if only one of suffixed breakpoints match", done => {
 		resizeViewport(1500, 768)
 		setTimeout(() => {
 			try {
