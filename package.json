@@ -14,7 +14,7 @@
     "url": "https://github.com/zmey3301/vue-adaptive/issues"
   },
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "is-ci || husky install",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint --ext .js src",
     "test": "jest",
@@ -43,6 +43,7 @@
     "eslint-config-prettier": "^7.2.0",
     "husky": "^5.0.7",
     "import-sort-style-module": "^6.0.0",
+    "is-ci": "^2.0.0",
     "jest": "^26.6.3",
     "jest-extended": "^0.11.5",
     "pinst": "^2.1.2",
