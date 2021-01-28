@@ -94,7 +94,7 @@ workflows:
             - test
       - publish:
           filters:
-            <<: *tags-filters
+            <<: *version-filters
           requires:
             - build
           context:
