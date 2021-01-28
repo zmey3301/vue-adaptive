@@ -88,7 +88,7 @@ workflows:
           filters: &version-filters
             <<: *tags-filters
             branches:
-              ignore: /./
+              ignore: /.*/
           requires:
             - lint
             - test
