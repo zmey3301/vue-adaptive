@@ -1,5 +1,6 @@
 {
   "global": {
+    "rem": 12.5,
     "orientationChangeTimeout": 1000,
     "throttle": 17
   },

@@ -39,6 +39,7 @@ export default class Adaptive {
    * Plugin configuration object
    * @typedef globalConf
    * @type {object}
+   * @property {number} [rem=10] - default rem value in case no breakpoints matched
    * @property {number} [throttle=17] - frequency of viewport data update
    * @property {number} [orientationTestCount=50] - orientationchange event end detection tries
    * @property {number} [orientationChangeTimeout=1000] - maximum orientationchange event duration before viewport update
@@ -72,6 +73,7 @@ export default class Adaptive {
   constructor(Vue, config) {
     // Defaults
     const defaultGlobal = {
+      rem: 10,
       throttle: 17,
       orientationTestCount: 25,
       orientationChangeTimeout: 1000
@@ -152,7 +154,7 @@ export default class Adaptive {
       values: [viewport]
     }
     const newDeviceList = {}
-    let rem = 10
+    let rem = this.globals.rem
     // Setting viewport size
     if (this.data.width !== viewport.width) this.data.width = viewport.width
     if (this.data.height !== viewport.height) this.data.height = viewport.height

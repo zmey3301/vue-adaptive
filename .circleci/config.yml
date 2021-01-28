@@ -2,8 +2,10 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
   codecov: codecov/codecov@1.1.3
-commands:
+jobs:
   install-deps:
+    executor:
+      name: node/default
     steps:
       - restore_cache:
           name: Restore Yarn Package Cache
@@ -17,13 +19,11 @@ commands:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-jobs:
   lint:
     executor:
       name: node/default
     steps:
       - checkout
-      - install-deps
       - run:
           name: Lint via ESLint
           command: yarn lint
@@ -32,7 +32,6 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - install-deps
       - run:
           name: Run Tests
           command: yarn test
@@ -41,5 +40,10 @@ jobs:
 workflows:
   lint+test:
     jobs:
-      - lint
-      - test
+      - install-deps
+      - lint:
+          requires:
+            - install-deps
+      - test:
+          requires:
+            - install-deps

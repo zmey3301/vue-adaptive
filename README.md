@@ -38,17 +38,20 @@ Configuration object has object named 'global' in it. This object contains all g
 ```json
 {
   "global": {
+    "rem": 10,
     "throttling": 17,
-    "orientationTestCount": 50,
+    "orientationTestCount": 25,
     "orientationChangeTimeout": 1000
   }
 }
 ```
 
+`rem`: Default rem value in case no breakpoint matched. Default: 10.
+
 `throttling`: Time in milliseconds, changes the frequency of viewport update.
 May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
 
-`orientationTestCount`: Count of checks with identical results meaning orientationchange event is over. Default: 50.
+`orientationTestCount`: Count of checks with identical results meaning orientationchange event is over. Default: 25.
 
 `orientationChangeTimeout`: Max duration of the orientationchange event. Default: 1000.
 

@@ -209,6 +209,19 @@ describe("Adaptive breakpoint matching", () => {
 })
 
 describe("Adaptive rem calculation", () => {
+  test("Adaptive should set default rem in case no breakpoints matched", done => {
+    resizeViewport(50, 50)
+    setTimeout(() => {
+      try {
+        expect(localVue.adaptive.rem).toBe(12.5)
+        expect(document.documentElement.style.fontSize).toBe("12.5px")
+        done()
+      } catch (error) {
+        done(error)
+      }
+    }, resizeHandleTimeout)
+  })
+
   test("Adaptive should set static rem based on config", done => {
     resizeViewport(1500)
     setTimeout(() => {
