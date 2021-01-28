@@ -14,7 +14,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: yarn install --immutable
+          command: yarn install --freeze-lockfile
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -45,13 +45,60 @@ jobs:
           command: yarn test
       - codecov/upload:
           file: coverage/coverage-final.json
+  build:
+    executor:
+      name: node/default
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build
+          command: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  publish:
+    executor:
+      name: node/default
+    steps:
+      - attach_workspace:
+          at: .
+      #      - run:
+      #          name: Set Registry
+      #          command: yarn config set registry $REGISTRY
+      - run:
+          name: Publish
+          command: NODE_AUTH_TOKEN=$AUTH_TOKEN yarn publish --ignore-scripts --no-git-tag-version --registry $REGISTRY
 workflows:
-  lint+test:
+  lint-deploy:
     jobs:
-      - install-deps
+      - install-deps:
+          filters: &tags-filters
+            tags:
+              only: /^v\d+\.\d+\.\d+.*/
       - lint:
+          filters:
+            <<: *tags-filters
           requires:
             - install-deps
       - test:
+          filters:
+            <<: *tags-filters
           requires:
             - install-deps
+      - build:
+          filters: &version-filters
+            <<: *tags-filters
+            branches:
+              ignore: /./
+          requires:
+            - lint
+            - test
+      - publish:
+          filters:
+            <<: *tags-filters
+          requires:
+            - build
+          context:
+            - npm-registry
