@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn format
-yarn lint
+err_code=0
+yarn lint || err_code=$? && yarn format
+(exit $err_code)
