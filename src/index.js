@@ -1,14 +1,15 @@
-import ClassList from "classlist"
 /**************************************************************************************************
- * Copyright © 2017-2020 Mikhail Perelygin <zmey3301@gmail.com>. All rights reserved.             *
+ * Copyright © 2017-2021 Mikhail Perelygin <mk.prlgn@gmail.com>.                                  *
  * Huge thanks to:                                                                                *
  *     Sergey Koshevarov <gondragos@gmail.com> for plugin idea;                                   *
  *     Maxim Logvinov <skovorodker.rekdo@gmail.com> for optimisation ideas;                       *
- * Program is distributed under the terms of the GNU Affero General Public License.               *
+ * Program is distributed under the terms of the MIT License.                                     *
  *                                                                                                *
- * @date        17.8.2020                                                                         *
- * @license     AGPL-3.0-or-later                                                                 *
+ * @date        28.1.2021                                                                         *
+ * @license     MIT                                                                               *
  **************************************************************************************************/
+
+import ClassList from "classlist"
 import throttle from "lodash.throttle"
 
 export default class Adaptive {

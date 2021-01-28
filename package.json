@@ -1,8 +1,8 @@
 {
   "name": "vue-adaptive",
   "description": "A rem scale adaptive with breakpoints for Vue.js",
-  "license": "AGPL-3.0",
-  "author": "zmey3301 <zmey3301@gmail.com>",
+  "license": "MIT",
+  "author": "zmey3301 <mk.prlgn@gmail.com>",
   "version": "1.4.1",
   "main": "dist/adaptive.umd.js",
   "module": "dist/adaptive.esm.js",
@@ -15,10 +15,10 @@
   },
   "scripts": {
     "postinstall": "husky install",
-    "format": "prettier -w .",
-    "lint": "prettier -c . && eslint --ext .js src",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint --ext .js src",
     "test": "jest",
-    "build": "rollup -c",
+    "build": "rollup --config",
     "prepack": "yarn test && yarn build",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
