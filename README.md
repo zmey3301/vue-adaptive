@@ -38,12 +38,19 @@ Configuration object has object named 'global' in it. This object contains all g
 ```json
 {
   "global": {
-    "throttling": 300
+    "throttling": 17,
+    "orientationTestCount": 50,
+    "orientationChangeTimeout": 1000
   }
 }
 ```
 
-`throttling`: Time in milliseconds, changes the frequency of viewport update. May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
+`throttling`: Time in milliseconds, changes the frequency of viewport update. 
+May be useful if you don't care about changes step and want to reduce CPU usage. Default: 17 (60fps frame time).
+
+`orientationTestCount`: Count of checks with identical results meaning orientationchange event is over. Default: 50.
+
+`orientationChangeTimeout`: Max duration of the orientationchange event. Default: 1000.
 
 #### 2. Devices (breakpoints) configuration
 
