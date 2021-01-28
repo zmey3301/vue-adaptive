@@ -9,7 +9,7 @@ A rem scale adaptive with breakpoints for Vue.js
 [![MIT](https://img.shields.io/npm/l/vue-adaptive.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg)](https://github.com/zmey3301/vue-adaptive/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg)](https://github.com/zmey3301/vue-adaptive/commits/master)
-[![David](https://img.shields.io/david/dev/zmey3301/vue-adaptive.svg)](https://david-dm.org/zmey3301/vue-adaptive?type=dev)
+[![David](https://img.shields.io/david/zmey3301/vue-adaptive.svg)](https://david-dm.org/zmey3301/vue-adaptive)
 [![CodeFactor](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive/badge)](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive)
 [![codecov](https://codecov.io/gh/zmey3301/vue-adaptive/branch/master/graph/badge.svg?token=rDPIiIiKyl&style=flat-square)](https://codecov.io/gh/zmey3301/vue-adaptive)
 
