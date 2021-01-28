@@ -6,7 +6,7 @@
   "desktop:wide": {
     "rem": 10,
     "from": {
-      "width": 1440
+      "width": 1441
     },
     "setDevice": true
   },
@@ -45,6 +45,21 @@
     },
     "setDevice": true
   },
+  "small": {
+    "from": {
+      "width": 101,
+      "height": 101
+    },
+    "to": {
+      "width": 300,
+      "height": 300
+    },
+    "base": {
+      "width": 200,
+      "height": 101
+    },
+    "setDevice": false
+  },
   "body": {
     "element": "body",
     "rem": 10,
@@ -53,8 +68,8 @@
       "height": 100
     },
     "to": {
-      "width": 100,
-      "height": 100
+      "width": 200,
+      "height": 200
     },
     "setDevice": false
   }

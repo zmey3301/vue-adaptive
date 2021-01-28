@@ -72,7 +72,7 @@ export default class Adaptive {
     // Defaults
     const defaultGlobal = {
       throttle: 17,
-      orientationTestCount: 50,
+      orientationTestCount: 25,
       orientationChangeTimeout: 1000
     }
     const defaultConfig = {
@@ -166,12 +166,13 @@ export default class Adaptive {
         let data
         if (elementCacheIndex === -1) {
           const el =
-            device.element instanceof HTMLElement || device.element === window
+            device.element instanceof HTMLElement
               ? device.element
               : document.querySelector(device.element)
+          const clientRect = el.getBoundingClientRect()
           data = {
-            width: el.innerWidth,
-            height: el.innerHeight
+            width: clientRect.width,
+            height: clientRect.height
           }
           cache.keys.push(device.element)
           cache.values.push(data)
@@ -263,9 +264,7 @@ export default class Adaptive {
       const currWidth = window.innerWidth
       if (currWidth === this.data.width && currHeight === this.data.height) {
         noChangeCount++
-        if (noChangeCount === this.globals.orientationTestCount) {
-          end()
-        }
+        if (noChangeCount === this.globals.orientationTestCount) end()
       } else {
         this.data.width = currWidth
         this.data.height = currHeight
