@@ -64,12 +64,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      #      - run:
-      #          name: Set Registry
-      #          command: yarn config set registry $REGISTRY
       - run:
           name: Publish
-          command: NODE_AUTH_TOKEN=$AUTH_TOKEN yarn publish --ignore-scripts --no-git-tag-version --registry $REGISTRY
+          command: NPM_AUTH_TOKEN=$AUTH_TOKEN yarn publish --ignore-scripts --no-git-tag-version --registry $REGISTRY
 workflows:
   lint-deploy:
     jobs:
