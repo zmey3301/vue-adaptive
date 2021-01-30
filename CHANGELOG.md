@@ -1,3 +1,13 @@
+## [2.0.1](https://github.com/zmey3301/vue-adaptive/compare/v2.0.0...v2.0.1) (2021-01-30)
+
+
+### Continuous Integration
+
+* **github releases:** added GitHub release automation ([68c9192](https://github.com/zmey3301/vue-adaptive/commit/68c9192))
+* **github releases:** fixed CI configuration ([a3489de](https://github.com/zmey3301/vue-adaptive/commit/a3489de))
+
+
+
 # [2.0.0](https://github.com/zmey3301/vue-adaptive/compare/v2.0.0-1...v2.0.0) (2021-01-30)
 
 
