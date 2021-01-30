@@ -12,6 +12,7 @@ A rem scale adaptive with breakpoints for Vue.js
 [![David](https://img.shields.io/david/zmey3301/vue-adaptive.svg)](https://david-dm.org/zmey3301/vue-adaptive)
 [![CodeFactor](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive/badge)](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive)
 [![codecov](https://codecov.io/gh/zmey3301/vue-adaptive/branch/master/graph/badge.svg?token=rDPIiIiKyl&style=flat-square)](https://codecov.io/gh/zmey3301/vue-adaptive)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Setup
 
