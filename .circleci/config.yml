@@ -4,8 +4,9 @@ orbs:
   codecov: codecov/codecov@1.1.3
 jobs:
   install-deps:
-    executor:
-      name: node/default
+    executor: &node-container
+      name: node/default,
+      tag: 15
     steps:
       - checkout
       - restore_cache:
@@ -27,7 +28,7 @@ jobs:
 
   lint:
     executor:
-      name: node/default
+      <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -36,7 +37,7 @@ jobs:
           command: yarn lint
   test:
     executor:
-      name: node/default
+      <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -47,7 +48,7 @@ jobs:
           file: coverage/coverage-final.json
   build:
     executor:
-      name: node/default
+      <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -60,7 +61,7 @@ jobs:
             - .
   publish:
     executor:
-      name: node/default
+      <<: *node-container
     steps:
       - attach_workspace:
           at: .
