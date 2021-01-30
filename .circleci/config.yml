@@ -67,7 +67,8 @@ jobs:
   github-release:
     executor: node
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: Generate GitHub Release
           command: yarn conventional-github-releaser --token $GITHUB_TOKEN --preset custom-config
