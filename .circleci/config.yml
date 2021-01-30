@@ -1,12 +1,13 @@
+alias:
+  &node-container
+    docker:
+      - image: cimg/node:15.6.0
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
   codecov: codecov/codecov@1.1.3
 jobs:
   install-deps:
-    executor: &node-container
-      name: node/default,
-      tag: 15
+    <<: *node-container
     steps:
       - checkout
       - restore_cache:
@@ -27,8 +28,7 @@ jobs:
             - .
 
   lint:
-    executor:
-      <<: *node-container
+    <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -36,8 +36,7 @@ jobs:
           name: Lint via ESLint
           command: yarn lint
   test:
-    executor:
-      <<: *node-container
+    <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -47,8 +46,7 @@ jobs:
       - codecov/upload:
           file: coverage/coverage-final.json
   build:
-    executor:
-      <<: *node-container
+    <<: *node-container
     steps:
       - attach_workspace:
           at: .
@@ -60,8 +58,7 @@ jobs:
           paths:
             - .
   publish:
-    executor:
-      <<: *node-container
+    <<: *node-container
     steps:
       - attach_workspace:
           at: .
