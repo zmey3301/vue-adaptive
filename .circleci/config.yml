@@ -70,7 +70,7 @@ jobs:
       - checkout
       - run:
           name: Generate GitHub Release
-          command: yarn conventional-github-release --token $GITHUB_RELEASE_TOKEN --preset custom-config
+          command: yarn conventional-github-releaser --token $GITHUB_TOKEN --preset custom-config
 workflows:
   lint-deploy:
     jobs:
@@ -103,7 +103,7 @@ workflows:
             - lint
             - test
           context:
-            - conventional-github-release
+            - conventional-github-releaser
       - publish:
           filters:
             <<: *version-filters
