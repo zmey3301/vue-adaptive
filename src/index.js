@@ -46,9 +46,19 @@ export default class Adaptive {
    */
 
   /**
+   * Current adaptive data
+   * @typedef adaptiveObservable
+   * @type {object}
+   * @property {object<string,boolean>} is - devices status
+   * @property {number} width - current viewport width
+   * @property {number} height - current viewport height
+   * @property {number} rem - current rem size in px
+   */
+
+  /**
    * Vue plugin install function
    * @param Vue - Vue framework object
-   * @param {{string: device}} config - adaptive configuration file
+   * @param {object<string, device>} config - adaptive configuration file
    * @param {globalConf} config.global - Plugin's instance-level config
    */
   static install(Vue, config) {
@@ -68,7 +78,7 @@ export default class Adaptive {
    * @param Vue - Vue framework object
    * @param {{string: device}} config - adaptive configuration file
    * @param {globalConf} config.global - Plugin's instance-level config
-   * @returns {Record<string, >} - reactive model, based on Vue
+   * @returns {adaptiveObservable} - reactive model, based on Vue
    */
   constructor(Vue, config) {
     // Defaults
@@ -90,11 +100,12 @@ export default class Adaptive {
     }
     // Global config
     this.globals = Object.assign(defaultGlobal, config.global)
-    delete config.global
+    this.config = {}
+
     const deviceList = {}
     for (let device in config) {
-      if (config.hasOwnProperty(device)) {
-        const deviceConfig = (config[device] = Object.assign(
+      if (config.hasOwnProperty(device) && device !== "global") {
+        const deviceConfig = (this.config[device] = Object.assign(
           {},
           defaultConfig,
           config[device]
@@ -105,26 +116,16 @@ export default class Adaptive {
           deviceList[device] = false
       }
     }
-    this.config = config
     const data = {
       is: deviceList,
       width: 0,
       height: 0,
       rem: 0
     }
-    const vueVersionArray = Vue.version.split(".")
-    /**
-     * Current adaptive data
-     * @type {object}
-     * @property {object.<string,boolean>} is - devices status
-     * @property {number} width - current viewport width
-     * @property {number} height - current viewport height
-     * @property {number} rem - current rem size in px
-     */
+    const [major, minor] = Vue.version.split(".").slice(0, 2).map(Number)
+    /** @type adaptiveObservable */
     this.data =
-      vueVersionArray[0] === 2 && vueVersionArray[1] >= 6
-        ? Vue.observable(data)
-        : new Vue({data}).$data
+      major === 2 && minor >= 6 ? Vue.observable(data) : new Vue({data}).$data
 
     // Listening to change events
     window.addEventListener(

@@ -3,7 +3,7 @@ parserOptions:
   sourceType: module
   ecmaFeatures:
     impliedStrict: true
-parser: babel-eslint
+parser: "@babel/eslint-parser"
 extends:
   - prettier
 rules:
