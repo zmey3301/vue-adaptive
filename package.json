@@ -19,6 +19,7 @@
     "lint": "prettier --check . && eslint --ext .js src",
     "test": "jest",
     "build": "rollup --config",
+    "version": "conventional-changelog -i CHANGELOG.md -s -p custom-config && git add CHANGELOG.md",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
