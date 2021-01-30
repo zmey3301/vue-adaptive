@@ -1,7 +1,6 @@
-alias:
-  &node-container
-    docker:
-      - image: cimg/node:15.6.0
+alias: &node-container
+  docker:
+    - image: cimg/node:15.6.0
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.1.3
