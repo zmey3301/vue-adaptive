@@ -1,3 +1,17 @@
+## [2.0.2](https://github.com/zmey3301/vue-adaptive/compare/v2.0.1...v2.0.2) (2021-01-31)
+
+
+### Build System
+
+* **npm bundle:** updated npmignore and readme badges ([4951c61](https://github.com/zmey3301/vue-adaptive/commit/4951c61))
+
+
+### Continuous Integration
+
+* **github releases:** fixed binaries installation ([87b381e](https://github.com/zmey3301/vue-adaptive/commit/87b381e))
+
+
+
 ## [2.0.1](https://github.com/zmey3301/vue-adaptive/compare/v2.0.0...v2.0.1) (2021-01-30)
 
 

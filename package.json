@@ -3,7 +3,7 @@
   "description": "A rem scale adaptive with breakpoints for Vue.js",
   "license": "MIT",
   "author": "zmey3301 <mk.prlgn@gmail.com>",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/adaptive.umd.js",
   "module": "dist/adaptive.esm.js",
   "repository": {
