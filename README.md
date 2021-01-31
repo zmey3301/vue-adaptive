@@ -2,16 +2,16 @@
 
 A rem scale adaptive with breakpoints for Vue.js
 
-[![npm](https://img.shields.io/npm/v/vue-adaptive.svg)](https://www.npmjs.com/package/vue-adaptive)
-[![npm](https://img.shields.io/npm/dt/vue-adaptive.svg)](https://www.npmjs.com/package/vue-adaptive)
-[![npm bundle size (version)](https://img.shields.io/bundlephobia/min/vue-adaptive/latest)](https://bundlephobia.com/result?p=vue-adaptive@1.4.1)
-[![Inline docs](http://inch-ci.org/github/zmey3301/vue-adaptive.svg?branch=master)](http://inch-ci.org/github/zmey3301/vue-adaptive)
+[![npm](https://img.shields.io/npm/v/vue-adaptive/latest)](https://www.npmjs.com/package/vue-adaptive)
+[![npm](https://img.shields.io/npm/dt/vue-adaptive)](https://www.npmjs.com/package/vue-adaptive)
+[![npm bundle size (version)](https://img.shields.io/bundlephobia/min/vue-adaptive/latest)](https://bundlephobia.com/result?p=vue-adaptive@latest)
+[![Inline docs](http://inch-ci.org/github/zmey3301/vue-adaptive.svg?branch=v2)](http://inch-ci.org/github/zmey3301/vue-adaptive?branch=v2)
 [![MIT](https://img.shields.io/npm/l/vue-adaptive.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/zmey3301/vue-adaptive.svg)](https://github.com/zmey3301/vue-adaptive/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive.svg)](https://github.com/zmey3301/vue-adaptive/commits/master)
-[![David](https://img.shields.io/david/zmey3301/vue-adaptive.svg)](https://david-dm.org/zmey3301/vue-adaptive)
+[![GitHub last commit](https://img.shields.io/github/last-commit/zmey3301/vue-adaptive/v2)](https://github.com/zmey3301/vue-adaptive/commits/master)
+[![David](https://img.shields.io/david/zmey3301/vue-adaptive)](https://david-dm.org/zmey3301/vue-adaptive)
 [![CodeFactor](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive/badge)](https://www.codefactor.io/repository/github/zmey3301/vue-adaptive)
-[![codecov](https://codecov.io/gh/zmey3301/vue-adaptive/branch/master/graph/badge.svg?token=rDPIiIiKyl&style=flat-square)](https://codecov.io/gh/zmey3301/vue-adaptive)
+[![codecov](https://codecov.io/gh/zmey3301/vue-adaptive/branch/master/graph/badge.svg?token=rDPIiIiKyl)](https://codecov.io/gh/zmey3301/vue-adaptive)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Setup
