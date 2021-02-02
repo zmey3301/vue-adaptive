@@ -1,3 +1,5 @@
 build
 coverage
 CHANGELOG.md
+.*rc
+.*ignore

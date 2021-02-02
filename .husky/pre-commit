@@ -1,6 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-err_code=0
-yarn lint || err_code=$? && yarn format > /dev/null 2>&1
-(exit $err_code)
+yarn lint-staged
