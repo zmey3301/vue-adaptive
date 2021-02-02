@@ -1,6 +1,4 @@
 {
-  "*": [
-    "eslint",
-    "prettier --write"
-  ]
+  "*.js": "eslint --ext .js",
+  "*.(js(?:on)?|yml|md)": "prettier --write"
 }
