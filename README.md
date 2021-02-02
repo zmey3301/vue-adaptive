@@ -66,7 +66,7 @@ Device structure is:
 ```
 <device>: {// Device (and global class) name
     if: <if>,
-	element: <selector>,
+	element: <selector or HTMLElement>,
 	rem: <px>
 	from: {
 		width: <fromWidth>,
@@ -77,8 +77,8 @@ Device structure is:
 		height: <toHeight>
 	},
 	base: {
-		width: <toWidth>,
-		height: <toHeight>
+		width: <baseWidth>,
+		height: <baseHeight>
 	},
 	k: <k>
 }
@@ -96,9 +96,10 @@ Device structure is:
 
 `base`: Base width and height for rem calculation.
 
-`k`: Additional k for rem calculation.
+`k`: Additional k for rem calculation. Default: 1.
 
-`setDevice`: Boolean, if true adaptive will set class or no-class and deviceType based on device name.
+`setDevice`: Boolean, if false adaptive will not set `device` or `no-device` class on the html element,
+and deviceType based on device name. Default: true.
 
 You also can create many breakpoints for one device by adding name to device, for example:
 
@@ -146,7 +147,7 @@ Or conditions in vue template:
 
 You always can see current viewport and rem value in `$adaptive` inside of your component.
 
-```vuejs
+```js
 computed = {
 	isWidth1600 () {
 		return this.$adaptive.width >= 1600
